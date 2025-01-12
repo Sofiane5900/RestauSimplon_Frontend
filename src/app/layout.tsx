@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "RestauSimplon",
-  description: "RestauSimplon, un site pour les restaurants Simplon",
+  description: "RestauSimplon, un site pour le restaurant de Simplon",
 };
 
 export default function RootLayout({

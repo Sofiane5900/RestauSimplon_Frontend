@@ -4,7 +4,7 @@ import HeroImage from "../../../public/hero.png";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col xl:flex-row items-center justify-between w-full max-w-screen-xl 2xl:max-w-screen-2xl m-auto px-8 py-20">
+    <div className="flex flex-col poppins xl:flex-row items-center justify-between w-full max-w-screen-xl 2xl:max-w-screen-2xl m-auto px-8 py-20">
       {/* Left Section */}
       <div className="text-center xl:text-left space-y-6 max-w-lg">
         <h1 className="text-4xl font-bold poppins text-teal-950">
@@ -18,7 +18,7 @@ const Hero = () => {
         </p>
         <div className="flex flex-col gap-4 xl:flex-row">
           <button className="px-6 py-3 bg-teal-950 text-white rounded-md shadow-md hover:bg-teal-700 transition">
-            Voir les clients
+            Consulter le menu
           </button>
           <button className="px-6 py-3 bg-red-600 text-white rounded-md shadow-md hover:bg-red-500 transition">
             Faire une commande
