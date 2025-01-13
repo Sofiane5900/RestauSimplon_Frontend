@@ -10,6 +10,9 @@
   src: url("../../fonts/Poppins-Regular.ttf");
 }
 
+
+
+
 .container {
   padding-left: 10%;
   padding-right: 10%;
@@ -17,6 +20,12 @@
 
 .poppins {
   font-family: "Poppins", sans-serif;
+}
+
+.hover-nav:hover {
+  color: darkred;
+  cursor: pointer;
+  
 }
 
 body {

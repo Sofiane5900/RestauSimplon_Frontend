@@ -2,17 +2,17 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-teal-950 text-white poppins m-auto flex items-center justify-between border-t-2 p-8">
-      <div className="flex  flex-col">
-        <h3>RestauSimplon</h3>
+    <footer className="bg-teal-950 text-white poppins m-auto flex flex-col md:flex-row items-center justify-between border-t-2 p-8">
+      <div className="flex flex-col items-center md:items-start mb-4 md:mb-0">
+        <h3 className="text-lg font-bold">RestauSimplon</h3>
         <p>© 2024. Tous droits réservés.</p>
       </div>
 
-      <ul className="list-none inline-block">
-        <li>Mentions légales</li>
-        <li>Confidentialité</li>
+      <ul className="list-none flex flex-col md:flex-row gap-4">
+        <li><a href="*" className="hover:underline">Mentions légales</a></li>
+        <li><a href="*" className="hover:underline">Confidentialité</a></li>
       </ul>
-    </div>
+    </footer>
   );
 };
 

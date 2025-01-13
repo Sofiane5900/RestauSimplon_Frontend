@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   const [sticky, setSticky] = React.useState(false); // La navbar n'est pas "sticky" par défaut
@@ -26,14 +27,14 @@ const Navbar = () => {
       >
         <Image src="./logo.svg" alt="logo" width={200} height={200} />
         <ul className="hidden gap-3 md:flex md:gap-x-8 ml-auto items-center">
-          <li className="text-teal-950 list-none poppins">Home</li>
-          <li className="text-teal-950 list-none poppins">Menu</li>
-          <li className="text-teal-950 list-none poppins">Contact</li>
-          <li>
+          <Link href="/" className="text-teal-950 list-none poppins hover-nav">Home</Link>
+          <Link href="/menu" className="text-teal-950 list-none poppins hover-nav">Menu</Link>
+          <Link href="/" className="text-teal-950 list-none poppins hover-nav">Contact</Link>
+          <Link href="/commande">
             <button className="text-white bg-teal-950 poppins py-2 px-4 rounded hover:scale-110 transition-all duration-200 ease-in-out">
               Commande
             </button>
-          </li>
+          </Link>
         </ul>
         {/* Hamburger Icon */}
         <button
