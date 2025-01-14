@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 interface Article {
   id: number;
@@ -84,6 +85,13 @@ const Menu = () => {
               </li>
             ))}
         </ul>
+        <Link href="/commande">
+  <div className="flex justify-center mt-4">
+    <button className="p-3 bg-red-600 text-white font-bold rounded-lg shadow-lg hover:bg-red-700 transition duration-300">
+      Ajouter un article
+    </button>
+  </div>
+</Link>
       </div>
     </div>
   );

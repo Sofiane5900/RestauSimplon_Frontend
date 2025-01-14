@@ -33,7 +33,7 @@ const CreateArticles = () => {
   };
 
   return (
-    <div className="flex flex-col items-center poppins">
+    <div className="flex flex-col items-center poppins pt-12">
       <h1 className="text-2xl mb-4 text-red-500 mt-6">
         Ajouter un article au menu
       </h1>
