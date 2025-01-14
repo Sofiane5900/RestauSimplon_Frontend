@@ -12,7 +12,6 @@ interface Article {
 
 const Menu = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<number>();
 
   const getArticles = async () => {
     try {
@@ -29,14 +28,14 @@ const Menu = () => {
     getArticles();
   }, []);
 
-  let filteredArticles;
-  if (selectedCategory) {
-    filteredArticles = articles.filter(
-      (article) => article.categorieId === selectedCategory
-    );
-  } else {
-    filteredArticles = articles;
-  }
+  // let filteredArticles;
+  // if (selectedCategory) {
+  //   filteredArticles = articles.filter(
+  //     (article) => article.categorieId === selectedCategory
+  //   );
+  // } else {
+  //   filteredArticles = articles;
+  // }
 
   return (
     <div className="flex flex-col justify-center items-center poppins">
