@@ -32,6 +32,15 @@ const Menu = () => {
     }
   }
 
+  const updateArticle = async (id: number) => {
+    try {
+      await axios.put(`https://localhost:7273/articles/${id}`);
+      setArticles(articles.filter((article) => article.id !== id));
+    } catch (error) {
+      console.error("erreur =", error);
+    }
+  }
+
   return (
     <div className="flex flex-col justify-center items-center poppins relative ">
       <h1 className="text-red-500 text-2xl py-2">Notre menu :</h1>
@@ -50,6 +59,9 @@ const Menu = () => {
                     <button onClick={() => deleteArticle(article.id)} className="text-red-600 p-2 absolute right-0 top-0">
                       X
                     </button>
+                    <button onClick={() => deleteArticle(article.id)} className="text-teal-950 p-2 absolute right-0 bottom-0">
+                      MODIFIER
+                    </button>
                   </li> 
                 </div>
             ))}
@@ -63,15 +75,18 @@ const Menu = () => {
           {articles
             .filter((article) => article.categorieId === 2)
             .map((article) => (
-                <div className="relative">
-                <li key={article.id} className="shadow-md p-4">
-                  <h3 className="">{article.nom}</h3>
-                  <p>Prix : {article.prix}€</p>
-                  <button onClick={() => deleteArticle(article.id)} className="text-red-600 p-2 absolute right-0 top-0">
-                    X
-                  </button>
-              </li>
-              </div>
+              <div className="relative">
+                  <li key={article.id} className="shadow-md p-4">
+                    <h3 className="">{article.nom}</h3>
+                    <p>Prix : {article.prix}€</p>
+                    <button onClick={() => deleteArticle(article.id)} className="text-red-600 p-2 absolute right-0 top-0">
+                      X
+                    </button>
+                    <button onClick={() => updateArticle(article.id)} className="text-teal-950 p-2 absolute right-0 bottom-0">
+                      MODIFIER
+                    </button>
+                  </li> 
+                </div>
             ))}
         </ul>
       </div>
@@ -84,14 +99,17 @@ const Menu = () => {
             .filter((article) => article.categorieId === 3)
             .map((article) => (
               <div className="relative">
-                  <li key={article.id} className="shadow-md p-4">
-                    <h3 className="">{article.nom}</h3>
-                    <p>Prix : {article.prix}€</p>
-                    <button onClick={() => deleteArticle(article.id)} className="text-red-600 p-2 absolute right-0 top-0">
-                      X
-                    </button>
-                  </li> 
-                </div>
+              <li key={article.id} className="shadow-md p-4">
+                <h3 className="">{article.nom}</h3>
+                <p>Prix : {article.prix}€</p>
+                <button onClick={() => deleteArticle(article.id)} className="text-red-600 p-2 absolute right-0 top-0">
+                  X
+                </button>
+                <button onClick={() => deleteArticle(article.id)} className="text-teal-950 p-2 absolute right-0 bottom-0">
+                  MODIFIER
+                </button>
+              </li> 
+            </div>
             ))}
             
         </ul>
