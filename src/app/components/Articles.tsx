@@ -2,17 +2,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { Article } from "../types/article";
 
-interface Article {
-  id: number;
-  nom: string;
-  prix: number;
-  categorieId: number;
-}
+
 
 const Menu = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
-
+  const [articles, setArticles] = useState<Article[]>([]); 
   const getArticles = async () => {
     try {
       const response = await axios.get("https://localhost:7273/articles");
@@ -23,35 +18,40 @@ const Menu = () => {
       console.error("erreur =", error); // DEBUG ERROR
     }
   };
-
   useEffect(() => {
     getArticles();
   }, []);
 
-  // let filteredArticles;
-  // if (selectedCategory) {
-  //   filteredArticles = articles.filter(
-  //     (article) => article.categorieId === selectedCategory
-  //   );
-  // } else {
-  //   filteredArticles = articles;
-  // }
+  const deleteArticle = async (id: number) => {
+    try {
+      await axios.delete(`https://localhost:7273/articles/${id}`);
+      setArticles(articles.filter((article) => article.id !== id));
+      alert("Article supprimé avec succès");
+    } catch (error) {
+      console.error("erreur =", error);
+    }
+  }
 
   return (
-    <div className="flex flex-col justify-center items-center poppins">
+    <div className="flex flex-col justify-center items-center poppins relative ">
       <h1 className="text-red-500 text-2xl py-2">Notre menu :</h1>
 
       {/* Entrées */}
       <div className="w-full max-w-2xl mb-8">
         <h2 className="text-xl font-bold mb-4 text-red-500">Entrées</h2>
-        <ul className="flex flex-col gap-4 border-b-transparent shadow-md p-4">
+        <ul className="flex flex-col gap-4 border-b-transparent">
           {articles
             .filter((article) => article.categorieId === 1)
             .map((article) => (
-              <li key={article.id}>
-                <h3 className="">{article.nom}</h3>
-                <p>Prix : {article.prix}€</p>
-              </li>
+              <div className="relative">
+                  <li key={article.id} className="shadow-md p-4">
+                    <h3 className="">{article.nom}</h3>
+                    <p>Prix : {article.prix}€</p>
+                    <button onClick={() => deleteArticle(article.id)} className="text-red-600 p-2 absolute right-0 top-0">
+                      X
+                    </button>
+                  </li> 
+                </div>
             ))}
         </ul>
       </div>
@@ -59,14 +59,19 @@ const Menu = () => {
       {/* Plats */}
       <div className="w-full max-w-2xl mb-8">
         <h2 className="text-xl font-bold mb-4 text-red-500">Plats</h2>
-        <ul className="flex flex-col gap-4 border-b-transparent shadow-md p-4">
+        <ul className="flex flex-col gap-4 border-b-transparent">
           {articles
             .filter((article) => article.categorieId === 2)
             .map((article) => (
-              <li key={article.id}>
-                <h3 className="">{article.nom}</h3>
-                <p>Prix : {article.prix}€</p>
+                <div className="relative">
+                <li key={article.id} className="shadow-md p-4">
+                  <h3 className="">{article.nom}</h3>
+                  <p>Prix : {article.prix}€</p>
+                  <button onClick={() => deleteArticle(article.id)} className="text-red-600 p-2 absolute right-0 top-0">
+                    X
+                  </button>
               </li>
+              </div>
             ))}
         </ul>
       </div>
@@ -74,15 +79,21 @@ const Menu = () => {
       {/* Desserts */}
       <div className="w-full max-w-2xl mb-8">
         <h2 className="text-xl font-bold mb-4 text-red-500">Desserts</h2>
-        <ul className="flex flex-col gap-4 border-b-transparent shadow-md p-4">
+        <ul className="flex flex-col gap-4 border-b-transparent">
           {articles
             .filter((article) => article.categorieId === 3)
             .map((article) => (
-              <li key={article.id}>
-                <h3 className="">{article.nom}</h3>
-                <p>Prix : {article.prix}€</p>
-              </li>
+              <div className="relative">
+                  <li key={article.id} className="shadow-md p-4">
+                    <h3 className="">{article.nom}</h3>
+                    <p>Prix : {article.prix}€</p>
+                    <button onClick={() => deleteArticle(article.id)} className="text-red-600 p-2 absolute right-0 top-0">
+                      X
+                    </button>
+                  </li> 
+                </div>
             ))}
+            
         </ul>
         <Link href="/commande">
   <div className="flex justify-center mt-4">

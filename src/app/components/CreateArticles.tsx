@@ -1,13 +1,19 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
+import { Article } from "../types/article";
+
 
 const CreateArticles = () => {
-  const [article, setArticle] = useState({
-    nom: "",
-    prix: "",
-    categorieId: "",
-  }); // Ici on initialise notre state avec nos attributs vide
+  const [article, setArticle] = useState<Article>(
+    // SetArticles prend mon interface Article
+    {
+      id: 0,
+      nom: "",
+      prix: 0,
+      categorieId: 0,
+    }
+  ); // SetArticles prend mon interface Article
 
   // ChangeEvent gestionnaire d'evenemnt, déclenche a chaque modification d'un champ de
   const handleChange = (
@@ -22,13 +28,13 @@ const CreateArticles = () => {
   };
 
   // Fonction qui POST le result de notre formulaire avec FormEvent
-  const postArticles = async (event: React.FormEvent) => {
+  const postArticle = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
       await axios.post("https://localhost:7273/articles", article);
-      alert("Article created successfully");
+      alert("Article crée avec succées");
     } catch (error) {
-      console.error("There was an error creating the article!", error);
+      console.error("Erreur =", error);
     }
   };
 
@@ -38,7 +44,7 @@ const CreateArticles = () => {
         Ajouter un article au menu
       </h1>
       <form
-        onSubmit={postArticles}
+        onSubmit={postArticle}
         className="flex flex-col gap-4 w-full max-w-md"
       >
         <input
